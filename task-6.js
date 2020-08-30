@@ -1,13 +1,36 @@
-function mapArray(array) {
-  const numbers = new Array(array.length);
-  for (let i = 0; i < array.length; i += 1) {
-    numbers[i] = array[i] * 10; //i элементу numbers присваиваем i элемент аррай * 10
+function calculateTotalPrice(array, prop) {
+  'use strict';
+  // Write code under this line
+  let result = 0; //переменная для вывода результата
+  for (const product of array) {
+    // перебираем массив обьектов
+
+    if (prop === product.name) {
+      // если запрос совпадает с наименованием в обьекте
+      result = result + product.price * product.quantity; // перепизать переменную - прайс*количество
+    }
   }
-  return numbers;
+  return result;
 }
 
-console.log(mapArray([-2, 0, 2]));
-// [-20, 0, 20]
+// Объекты и ожидаемый результат
+const products = [
+  { name: 'Радар', price: 1300, quantity: 4 },
+  { name: 'Радар', price: 1280, quantity: 2 },
+  { name: 'Радар', price: 1320, quantity: 1 },
+  { name: 'Сканер', price: 2700, quantity: 1 },
+  { name: 'Сканер', price: 2500, quantity: 3 },
+  { name: 'Дроид', price: 400, quantity: 7 },
+  { name: 'Захват', price: 1200, quantity: 2 },
+];
 
-console.log(mapArray([-2.5, 0, 2.5]));
-// [-25, 0, 25]
+console.log(calculateTotalPrice(products, 'Радар'));
+// 9080
+
+console.log(calculateTotalPrice(products, 'Сканер'));
+// 10200
+
+console.log(calculateTotalPrice(products, 'Захват'));
+// 2400
+
+console.log(calculateTotalPrice(products, 'Дроид'));

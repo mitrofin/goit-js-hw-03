@@ -1,6 +1,15 @@
 function getAllPropValues(array, prop) {
   'use strict';
-  // Write code under this line
+  // Write code under this lin
+  let result = []; // создаем переменную с пустым массивом
+  for (let key of array) {
+    //перебираем массив с обьектами
+    if (prop in key) {
+      // если свойство в ключе есть
+      result.push(key[prop]); // запиши в масив свойства по ключу
+    }
+  }
+  return result;
 }
 
 // Объекты и ожидаемый результат
